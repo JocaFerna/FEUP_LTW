@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users (
-  username VARCHAR PRIMARY KEY,      -- unique username
+  id INTEGER  PRIMARY KEY AUTOINCREMENT,
+  username VARCHAR UNIQUE,      -- unique username
   password VARCHAR,                  -- password stored in sha-1
   name VARCHAR,                      -- real name
   email VARCHAR                       

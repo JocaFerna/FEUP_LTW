@@ -31,6 +31,5 @@
             $_SESSION['User'] = $username;
             header("Location: ../index.php");
             exit;
-            exit;
         }
 ?>

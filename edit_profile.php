@@ -16,7 +16,7 @@
         $testquery->execute([':userrr'=>$username]);
         $user = $testquery->fetch(PDO::FETCH_ASSOC);
     ?>
-    <form action="php/register.php" method="post">
+    <form action="php/edit_profile.php" method="post">
         <div class="edit-profile-box">
 
             <h1><b>Edit Profile</b></h1>
@@ -25,7 +25,7 @@
                 <label for="name"><b>Name: </b></label>
                 <div>
                 <?php
-                echo "<input type='text' placeholder='Enter Name' name='name' class='inputbox_edit' required value=". $user['name'].">";
+                echo "<input type='text' placeholder='Enter Name' name='name' class='inputbox_edit'  value='". $user['name'] . "' required>";
                 ?>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <label for="email"><b>E-Mail: </b></label>
                 <div>
                 <?php
-                echo "<input type='email' placeholder='Enter E-mail' name='email' class='inputbox_edit' required value=". $user['email'].">";
+                echo "<input type='email' placeholder='Enter E-mail' name='email' class='inputbox_edit' required value='". $user['email']."'>";
                 ?>
                 </div>
             </div>
@@ -43,13 +43,13 @@
                 <label for="uname"><b>Username: </b></label>
                 <div>
                 <?php
-                    echo "<input type='text' placeholder='Enter Username' name='uname' class='inputbox_edit' required value=". $user['username'].">";
+                    echo "<input type='text' placeholder='Enter Username' name='uname' class='inputbox_edit' required value='". $user['username']."'>";
                 ?>
                 </div>
             </div>
 
             <div class="input-group">
-                <label for="psw"><b>Password: </b></label>
+                <label for="psw"><b>New or Current Password: </b></label>
                 <div>
                 <input type="password" placeholder="Enter Password" name="psw" class="inputbox_edit"  required>
                 </div>           
@@ -66,5 +66,14 @@
                 <button type="submit" class="button"><b>Save Changes</b></button>
                 <a href="profile.php" class="buttonForA"><b>Go Back to Profile</b></a>
             </div>
+            <span class="success" id="msg">
+            <?php
+            session_start();
+            if (isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+                unset($_SESSION['error']); // Clear the error message from the session
+            }
+            ?>
+            </span>
         </div>
     </body>
