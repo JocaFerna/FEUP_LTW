@@ -3,7 +3,7 @@
         $db = new PDO('sqlite:../database/LTW.db');
         $username = $_POST['uname'];
         $password = $_POST['psw'];
-        $testquery = $db->prepare("SELECT password FROM users WHERE Username=:userrr");
+        $testquery = $db->prepare("SELECT password FROM Users WHERE Username=:userrr");
         $testquery->execute([':userrr'=>$username]);
         $passe = $testquery->fetch(PDO::FETCH_ASSOC);
         if(empty($passe)){
@@ -11,7 +11,7 @@
             header("Location: ../login.php");
             exit;
         }
-        else if($passe['Pass'] != $password){
+        else if($passe['password'] != sha1($password)){
             $_SESSION['error'] = "Incorrect Password!";
             header("Location: ../login.php");
             exit;
@@ -19,7 +19,7 @@
         else{
             $_SESSION['User'] = $username;
 
-            header("../index.php");
+            header("Location: ../index.php");
             exit;
         }
 ?>

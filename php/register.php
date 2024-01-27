@@ -17,7 +17,7 @@
             exit;
         }
         //cOM TEMPO VERIFICAR EMAIL
-        $testquery = $db->prepare("SELECT * FROM users WHERE username=:userrr");
+        $testquery = $db->prepare("SELECT * FROM Users WHERE username=:userrr");
         $testquery->execute([':userrr'=>$username]);
         $passe = $testquery->fetch(PDO::FETCH_ASSOC);
         if(!empty($passe)){
@@ -26,7 +26,7 @@
             exit;
         }
         else{
-            $stmt = $db->prepare('INSERT INTO users(username,password,name,email) VALUES (?, ?, ?, ?)');
+            $stmt = $db->prepare('INSERT INTO Users(username,password,name,email) VALUES (?, ?, ?, ?)');
             $stmt->execute(array($username,sha1($password),$name,$email));
             $_SESSION['User'] = $username;
             header("Location: ../index.php");

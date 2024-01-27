@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/drcustoms.css">
     <title>If-Then-Else Example</title>
+
 </head>
 <body>
 <?php
@@ -19,19 +21,18 @@
     // You can also include more HTML outside the if-else block
     echo "<p>This is some HTML outside the if-else block.</p>";
 ?>
-<a href="login.php">Login</a>
-<span class="error">
 <?php
     // PHP code for conditional logic
     session_start();
     if (isset($_SESSION['User'])) {
-        echo $_SESSION['User']; 
+        echo "<a href="."'php/logout.php'".">Logout</a>";
+        echo "<a href="."'profile.php'>".$_SESSION['User']."</a>"; 
     }
     else{
-        echo "No user found :((";
+        echo "<a href="."'login.php'".">Login</a>";
     }
 ?>
-</span>
+
 
 </body>
 </html>
