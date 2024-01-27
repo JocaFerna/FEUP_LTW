@@ -49,5 +49,14 @@
     <div class="buttonslogin">
         <a href="edit_profile.php" class="buttonForA"><b>Edit Profile</b></a>
     </div>
+    <span class="success" id="msg">
+        <?php
+        session_start();
+        if (isset($_SESSION['error'])) {
+            echo $_SESSION['error'];
+            unset($_SESSION['error']); // Clear the error message from the session
+        }
+        ?>
+    </span>
         </div>
     </body>
